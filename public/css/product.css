@@ -1,0 +1,256 @@
+/*
+ * Product App Stylesheet v0.1.0
+ * 
+ * The stylesheet for the product information app
+ *
+ * Copyright (c) 2010, Isca Networks Corporation Ltd. All rights reserved.
+ * This software is the proprietary information of Isca Networks Corporation Ltd.  
+ * Use is subject to license terms.
+ *
+ * http://www.iscanetworks.com/
+ */
+ 
+ body {
+ 	font-size: 16px;
+ }
+ 
+ .clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+ 
+.modalSearch{
+	left: 3%;
+	margin: 10px auto;
+	position: absolute;
+	top: 10%;
+	width: 94%;
+	z-index: 99999;
+	display:none;
+}
+
+.dropdownSearch{
+	display: none;
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	z-index: 99999;	
+}
+
+.dropdownSearch.night-skin{
+	background-image:none;
+	background-color: rgba(253, 193, 9, 0.839844);
+}
+
+
+#searchBox{
+	background-color: transparent;
+	margin: 10px auto 20px;
+	text-align: center;
+	padding:10px;
+}
+
+#searchBut{
+	width: 65%;
+	margin: 30px 0px;
+	font-size: 3em;
+}
+
+input#searchField{
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 3.5em;
+	margin: 0px auto;
+	max-width: 1010px;
+	padding: 10px 0px;
+	text-align: center;
+	width: 96%;
+}
+
+#closeSearchBut{
+	position:relative;
+	right:10px;	
+	margin: 5px 0px 40px;
+}
+
+#searchErrorBox{
+	display:none;
+	width:50%;
+	min-width: 200px;
+	color: red;	
+	text-align: center;
+	margin: 10px auto;
+	font-size: 1.5em;
+}
+
+/*-----------------------------------------------------
+Product Info 
+-----------------------------------------------------*/
+
+#productSummaryWrapper, #productDetailsWrapper{
+	width:650px;
+	margin: 20px 60px 0px;
+	font-size: 16px;
+}
+
+#productSummaryWrapper h1, #productDetailsWrapper h1{
+	margin-top: 8px;
+	margin-bottom: 3px;
+}
+
+.productDetailsColumn{
+	padding: 0px 10px;
+	float: left;
+}
+
+#productImage{
+	width:310px;
+	float:left;
+	min-height:285px;
+	padding: 25px 0px;
+	background-color: #fff;
+}
+
+	#productImage #noProductImage{
+		text-align: center;
+		width: 55%;
+		padding: 20px 0px;
+		font-size: 17px;
+		font-weight: bold;
+		color: #666666;
+		border: 3px solid #C0C0C0;
+		margin: 100px auto;
+		opacity: 0.8;
+	}
+	
+#productImage img{	
+	display: block;
+	margin: 0 auto;
+}
+
+#productSummary{
+	width:280px;
+	padding:20px;
+	float:left;
+	min-height:303px;
+	margin-left: 14px;
+}
+
+
+#priceTag{
+	float: right; 
+	padding: 3px 7px 2px; 
+	position: relative;
+	top:-35px;
+	left: 20px;
+	margin-bottom: -18px;
+}
+
+	#priceTag #currency {
+		vertical-align: top; 
+	}
+	
+#salePriceTag{
+	float: right;
+	padding: 3px 7px 2px;
+	position: relative;
+	top: -35px;
+	left: 20px;
+	margin-bottom: -18px;
+	
+	background-color: white;
+	color: #E3001B;
+	font-family: 'Impact', Impact, "Arial Black", Arial;
+	font-size: 40px;
+}
+
+	#salePriceTag #salecurrency{
+		font-size: 24px;
+		vertical-align: top;
+	}
+
+img.picto{
+	float:left;
+}
+
+/*-----------
+Colours
+-----------*/
+
+#productImage{
+	border: 3px solid #E3001B; /*#D31FFA;*/
+}
+
+#productSummaryWrapper{
+	border-bottom: 3px solid#E3001B; /*#D31FFA;*/
+}
+
+#productSummary{
+	background-color: #E3001B; 
+	background-image: -moz-linear-gradient(100% 100% 90deg, #b21489, #ba20893);
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#b21489), to(#ba20893));
+}
+
+#priceTag{
+	background-color: #000;
+}
+
+/*----------
+typography
+----------*/
+
+	#productSummary h1{
+		font-family: rockwell, 'Rockwell';
+		text-shadow:0px 1px 2px #888;
+		font-size:42px;
+		color: #222;
+	}
+	
+	#productSummary h2{
+		font-family: rockwell, Rockwell;
+		font-size: 23px;
+		text-shadow: black 0px 1px 2px;
+		color: #fff;
+	}
+	
+	#productSummary h3{
+		margin:4px 0px;
+		font-size: 16px;
+		font-style: italic;	
+		font-weight: bold;
+		color: #000;
+	}
+	
+	#productSummary p {
+		font-size: 16px;
+		font-weight: bold;
+		color: #fff;
+		text-shadow: none;
+	}
+	
+	.productDetailsColumn h1{
+		color: #E3001B;
+		font-family: rockwell, 'Rockwell';
+		font-size: 20px;
+		text-shadow: lightGrey 0px 1px 1px;
+		margin-bottom: 5px;
+	}
+	
+	.productDetailsColumn p{
+		font-size: 15px;
+		font-color: #560D5C;
+	}
+	
+	#priceTag{
+		color: #fff; 
+		font-family: 'Impact', Impact, "Arial Black", Arial;
+		font-size: 40px; 
+		font-weight: bold;
+	}
+	
+	#priceTag #currency {
+		font-size: 24px;   
+	}

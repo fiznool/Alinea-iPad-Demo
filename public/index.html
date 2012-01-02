@@ -1,3 +1,351 @@
-<html>
-  Hello, World!
+<!doctype html>
+<!-- Conditional comment for mobile ie7 http://blogs.msdn.com/b/iemobile/ -->
+<!--[if IEMobile 7 ]>    <html class="no-js iem7"> <![endif]-->
+<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Alinea Demo App</title>
+
+  <!-- Mobile viewport optimization http://goo.gl/z0PA8 -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Home screen icon  Mathias Bynens http://goo.gl/6nVq0 -->
+  <!-- For iPhone 4 with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/h/apple-touch-icon.png">
+  <!-- For first-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/m/apple-touch-icon.png">
+  <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="img/l/apple-touch-icon-precomposed.png">
+  <!-- For nokia devices: -->
+  <link rel="shortcut icon" href="img/l/apple-touch-icon.png">
+
+  <!-- iOS web app, deletable if not needed -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <!-- 320x460 for iPhone 3GS -->
+  <!-- <link rel="apple-touch-startup-image" media="(max-device-width: 480px) and not (-webkit-min-device-pixel-ratio: 2)" href="img/startup.png"> -->
+  <!-- 640x920 for retina display -->
+  <!-- <link rel="apple-touch-startup-image" media="(max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" href="img/startup-retina.png"> -->
+  <!-- iPad Portrait 768x1004 -->
+  <!-- <link rel="apple-touch-startup-image" media="(min-device-width: 768px) and (orientation: portrait)" href="img/startup-tablet-portrait.png"> -->
+  <!-- iPad Landscape 1024x748 -->
+  <!-- <link rel="apple-touch-startup-image" media="(min-device-width: 768px) and (orientation: landscape)" href="img/startup-tablet-landscape.png"> -->
+  
+  <!-- The script prevents links from opening in mobile safari. https://gist.github.com/1042026 -->
+  <!-- <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script> -->
+  
+  <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
+  <meta http-equiv="cleartype" content="on">
+
+  <!-- more tags for your 'head' to consider https://gist.github.com/849231 -->
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css?v=1" />
+
+  <!-- App stylesheets -->
+  <link rel="stylesheet" href="js/libs/jquery/jquery.mobile/jquery.mobile-1.0.min.css" />
+  <link rel="stylesheet" href="js/libs/jquery/jquery.aslideshow/simple/styles.css" />
+  <link rel="stylesheet" href="css/alinea.css" />
+  <link rel="stylesheet" href="css/product.css" />
+  
+  <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
+  <script src="js/libs/modernizr-custom.js"></script>
+  <!-- Media Queries Polyfill https://github.com/h5bp/mobile-boilerplate/wiki/Media-Queries-Polyfill -->
+  <script>Modernizr.mq('(min-width:0)') || document.write('<script src="js/libs/respond.min.js"><\/script>')</script>
+</head>
+
+<body data-theme="i">
+  
+  <!-- JavaScript at the bottom for fast page loading -->
+  <script src="js/libs/jquery/jquery-1.6.min.js"></script>
+  <script src="js/libs/jquery/jquery.mobile/jquery.mobile-1.0.min.js"></script>
+  <script src="js/jquery.mobile.config.js"></script>
+  <script src="js/libs/jquery/jquery.json-2.2.min.js"></script>
+  <script src="js/libs/jquery/jquery.aslideshow.min.js"></script>
+
+  <!-- Won't use helper.js because the phantomGhostHandler messes with jQM navbar-->
+  <!--<script src="js/mylibs/helper.js"></script>-->
+
+  <script src="js/script.js"></script>
+  
+  <!-- Views -->
+
+  <div data-role="page" id="main" style="background: white;" >
+    <div data-role="content" style="padding:0px;" class="alinea-page">
+      <div class="centeredImage"><img src="img/home/home-logo.png" alt="Alinéa" /></div>
+      <h1 id="home-subtitle" style="display:none;">Bienvenue a Alinéa!</h1>
+      <div id="swiffy-container" class="centeredImage" style="overflow:hidden;margin:0;text-align:center;height:236px;margin: 55px 0;">
+        <iframe id="swiffy" src="img/home/swiffy-output.htm" width="685" height="236">
+          <img src="img/home/home-banner-alt1.jpg" alt="Alinéa" />
+        </iframe>
+      </div>
+      <div id="home-products" class="ui-grid-b" >
+        <!-- Filled in by jQuery -->
+        <div class="ui-block-a">
+          <div class="product-container" data-product="">
+            <a href="#"></a>
+            <a href="#"><img src="img/home/soldes.gif" class="sale-img"/></a>
+            <img src="" class="main-img"/>
+            <div>
+              <h1 class="name"></h1>
+              <h2 class="brand"></h2>
+              <h4>
+                <span class="price">trial</span>
+                <span class="saleprice">sale</span>
+              </h4>
+            </div>
+          </div> <!-- Close product-container -->
+        </div>
+        <div class="ui-block-b " data-product="">
+          <div class="product-container">
+            <a href="#"></a>
+            <a href="#"><img src="img/home/soldes.gif" class="sale-img"/></a>
+            <img src="" class="main-img"/>
+            <div>
+              <h1 class="name"></h1>
+              <h2 class="brand"></h2>
+              <h4>
+                <span class="price">trial</span>
+                <span class="saleprice">sale</span>
+              </h4>
+            </div>
+          </div> <!-- Close product-container --> 
+        </div>
+        <div class="ui-block-c " data-product="">
+          <div class="product-container">
+            <a href="#"></a>
+            <a href="#"><img src="img/home/soldes.gif" class="sale-img"/></a>
+            <img src="" class="main-img"/>
+            <div>
+              <h1 class="name"></h1>
+              <h2 class="brand"></h2>
+              <h4>
+                <span class="price">trial</span>
+                <span class="saleprice">sale</span>
+              </h4>
+            </div>
+          </div> <!-- Close product-container --> 
+        </div>
+      </div><!-- /grid-a -->
+    </div>
+    <div data-role="footer" data-position="fixed" data-id="fixed-footer">
+      <div data-role="navbar" class="nav-custom-icon" >
+        <ul>
+          <li><a href="#main" data-icon="house" class="ui-btn-active ui-state-persist footer-home-btn" >Accueil</a></li>
+          <li><a href="#productFindPage" data-icon="find"  class="footer-find-btn" >Trouvez un produit</a></li>
+          <li><a href="#mapPage" data-icon="map-marker" class="footer-map-btn" >Plan du magasin</a></li>
+          <li><a href="#connectPage" data-icon="help" data-rel="dialog" class="footer-call-btn" >Demande d'aide</a></li>
+        </ul>
+      </div><!-- Close nav bar -->
+    </div> <!-- close footer -->
+  </div> <!-- /main -->
+
+
+  <div data-role="page" id="productFindPage" class="alinea-page">
+    <div data-role="header" data-theme="d">
+      <div class="centeredImage"><img src="img/header-small.png" alt="Alinéa" /></div>
+    </div>
+    <div data-role="content">
+      <div class="centeredImage">
+        <a href="#productSearchPage" data-role="button" data-inline="true" 
+           id="search-btn" data-category="all" data-icon="search" >Recherche</a>
+      </div>
+      <div id="content"> 
+        <ul id="catList" data-role="listview" data-inset="true">
+          <!-- Filled by JS -->
+        </ul>
+      </div>
+    </div>
+    <div data-role="footer" data-position="fixed" data-id="fixed-footer">
+      <div data-role="navbar" class="nav-custom-icon" >
+        <ul>
+          <li><a href="#main" data-icon="house" class="footer-home-btn" >Accueil</a></li>
+          <li><a href="#productFindPage" data-icon="find"  class="ui-btn-active ui-state-persist footer-find-btn" >Trouvez un produit</a></li>
+          <li><a href="#mapPage" data-icon="map-marker" class="footer-map-btn" >Plan du magasin</a></li>
+          <li><a href="#connectPage" data-icon="help" data-rel="dialog" class="footer-call-btn" >Demande d'aide</a></li>
+        </ul>
+      </div><!-- Close nav bar -->
+    </div> <!-- close footer -->
+  </div> <!-- /productFindPage -->
+      
+  <div data-role="page" id="subCategoriesPage" class="alinea-page">
+    <div data-role="header" data-theme="d">
+      <div class="centeredImage"><img src="img/header-small.png" alt="Alinéa" /></div>
+    </div>
+    <div data-role="content" id="subCategoryContent">
+      <div id="image-header" class="cat-header">
+        <img src="" width="400px" />
+      </div>
+      <ul id="product-list" data-role="listview" data-inset="true">
+        <!-- Filled by JS --> 
+      </ul>		
+    </div>
+    <div data-role="footer" data-position="fixed" data-id="fixed-footer">
+      <div data-role="navbar" class="nav-custom-icon" >
+        <ul>
+          <li><a href="#main" data-icon="house" class="footer-home-btn" >Accueil</a></li>
+          <li><a href="#productFindPage" data-icon="find"  class="ui-btn-active ui-state-persist footer-find-btn" >Trouvez un produit</a></li>
+          <li><a href="#mapPage" data-icon="map-marker" class="footer-map-btn" >Plan du magasin</a></li>
+          <li><a href="#connectPage" data-icon="help" data-rel="dialog" class="footer-call-btn" >Demande d'aide</a></li>
+        </ul>
+      </div><!-- Close nav bar -->
+    </div> <!-- close footer -->
+  </div> <!-- /subCategoriesPage -->
+
+  <!-- Templates -->
+  <li id="catListItem" class="cat-item" data-category="">
+    <a href="">
+      <h3 class="cat-image">
+        <img src=""  height="80px"/>
+      </h3>
+      <h1 class="cat-text">		
+        <span ></span>
+      </h1>
+    </a>
+  </li>
+
+  <li id="subCatListItem" class="sub-cat-item" data-product="">
+    <a href="">
+      <h3 class="item-image">
+          <img src="" height="80px"/>
+      </h3>
+      <h3>
+        <span class="itemName ">
+        </span>
+        <span class="itemPrice ">
+        </span>
+        <span class="salePrice ">
+        </span>
+      </h3>
+    </a>
+  </li>
+
+
+  <div data-role="page" id="productInfoPage" class="alinea-page">
+    <div data-role="header" data-theme="d">
+      <div class="centeredImage"><img src="img/header-small.png" alt="Alinéa" /></div>
+    </div>
+    <div data-role="content">
+      <div id="newProductStyle2">
+        <div id="productSummaryWrapper" class="clearfix">
+          <div id="productImage">
+            <!-- Filled by JS -->
+          </div>
+          <div id="productSummary">
+            <!-- Filled by JS -->
+          </div>
+          <div id="priceTag">
+            <!-- Filled by JS -->
+          </div>
+          <div id="salePriceTag">
+            <!-- Filled by JS -->
+          </div>
+        </div>
+        <div id="productDetailsWrapper" class="ui-grid-a clearfix">
+          <div class="ui-block-a">
+            <div id="productDetailsLeftColumn" class="productDetailsColumn">
+              <!-- Filled by JS -->
+            </div>
+          </div>
+          <div class="ui-block-b">
+            <div id="productDetailsRightColumn" class="productDetailsColumn">
+              <!-- Filled by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div data-role="footer" data-position="fixed" data-id="fixed-footer">
+      <div data-role="navbar" class="nav-custom-icon" >
+        <ul>
+          <li><a href="#main" data-icon="house" class="footer-home-btn" >Accueil</a></li>
+          <li><a href="#productFindPage" data-icon="find"  class="ui-btn-active ui-state-persist footer-find-btn" >Trouvez un produit</a></li>
+          <li><a href="#mapPage" data-icon="map-marker" class="footer-map-btn" >Plan du magasin</a></li>
+          <li><a href="#connectPage" data-icon="help" data-rel="dialog" class="footer-call-btn" >Demande d'aide</a></li>
+        </ul>
+      </div><!-- Close nav bar -->
+    </div> <!-- close footer -->
+  </div> <!-- /productInfoPage -->
+
+  
+  <div data-role="page" id="productSearchPage" class="alinea-page"> 
+    <div data-role="header"  data-theme="d">
+      <div class="centeredImage"><img src="img/header-small.png" alt="Alinéa" /></div>
+    </div>
+    <div data-role="content">
+      <ul id="list" data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Rechercher un bien...">
+        <!-- Filled in by JS -->
+      </ul>
+    </div> 
+    <div data-role="footer" data-position="fixed" data-id="fixed-footer">
+      <div data-role="navbar" class="nav-custom-icon" >
+        <ul>
+          <li><a href="#main" data-icon="house" class="footer-home-btn" >Accueil</a></li>
+          <li><a href="#productFindPage" data-icon="find"  class="ui-btn-active ui-state-persist footer-find-btn" >Trouvez un produit</a></li>
+          <li><a href="#mapPage" data-icon="map-marker" class="footer-map-btn" >Plan du magasin</a></li>
+          <li><a href="#connectPage" data-icon="help" data-rel="dialog" class="footer-call-btn" >Demande d'aide</a></li>
+        </ul>
+      </div><!-- Close nav bar -->
+    </div> <!-- close footer -->
+  </div> <!-- /productSearchPage -->
+  
+  
+  <div data-role="page" id="mapPage" class="alinea-page">
+    <div data-role="header" data-theme="d">
+      <div class="centeredImage">
+        <img src="img/header-small.png" alt="Alinéa" />
+      </div>
+    </div>
+    <div data-role="content">
+      <div class="centeredImage">
+        <img src="img/map.png" alt=""/>
+      </div>
+    </div>
+    <div data-role="footer" data-position="fixed" data-id="fixed-footer">
+      <div data-role="navbar" class="nav-custom-icon" >
+        <ul>
+          <li><a href="#main" data-icon="house" class="footer-home-btn" >Accueil</a></li>
+          <li><a href="#productFindPage" data-icon="find"  class="footer-find-btn" >Trouvez un produit</a></li>
+          <li><a href="#mapPage" data-icon="map-marker" class="ui-btn-active ui-state-persist footer-map-btn" >Plan du magasin</a></li>
+          <li><a href="#connectPage" data-icon="help" data-rel="dialog" class="footer-call-btn" >Demande d'aide</a></li>
+        </ul>
+      </div><!-- Close nav bar -->
+    </div> <!-- close footer -->
+  </div> <!-- /mapPage -->
+
+  <div data-role="page" id="connectPage">
+    <div data-role="header">
+      <h1>Appel conseiller pour assistance</h1>	
+    </div>
+    <div data-role="content">
+      <div id="callingTxt1">
+        <p>Vous avez demandé l'assistance de l'un de nos conseillers.</p>
+        <p>Merci de confirmer votre demande. Un conseiller vous rejoindra dans les plus brefs délais.</p>
+      </div>
+      <div id="callingTxt2" style="display: none">
+        <p>Merci! Votre demande a été prise en compte. Un conseiller vous rejoindra dans les plus brefs délais.</p>
+      </div>
+      <!-- <a href="#connectConfirmPage" data-role="button" data-rel="dialog" data-transition="none">Confirmer</a>-->
+      <div id="confirmBtn"><button onclick="$.showConfirmPage()">Confirmer</button></div>
+      <a href="#main" data-role="button">Annuler</a>
+    </div>
+    
+  </div>
+  <!-- /Views -->
+
+  <!-- mathiasbynens.be/notes/async-anialytics-snippet Change UA-XXXXX-X to be your site's ID -->
+  <!--
+  <script>
+    var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+    g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
+    s.parentNode.insertBefore(g,s)}(document,"script"));
+  </script>
+  -->
+</body>
 </html>
