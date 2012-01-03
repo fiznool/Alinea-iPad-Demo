@@ -1,15 +1,3 @@
-/*
- * Product App Stylesheet v0.1.0
- * 
- * The stylesheet for the product information app
- *
- * Copyright (c) 2010, Isca Networks Corporation Ltd. All rights reserved.
- * This software is the proprietary information of Isca Networks Corporation Ltd.  
- * Use is subject to license terms.
- *
- * http://www.iscanetworks.com/
- */
- 
  body {
  	font-size: 16px;
  }
@@ -149,10 +137,14 @@ Product Info
 	margin-bottom: -18px;
 }
 
-	#priceTag #currency {
-		vertical-align: top; 
-	}
-	
+#priceTag #currency {
+  vertical-align: top; 
+}
+
+#priceTag.onsale {
+  text-decoration: line-through;
+}
+
 #salePriceTag{
 	float: right;
 	padding: 3px 7px 2px;
@@ -167,10 +159,14 @@ Product Info
 	font-size: 40px;
 }
 
-	#salePriceTag #salecurrency{
-		font-size: 24px;
-		vertical-align: top;
-	}
+#salePriceTag #salecurrency{
+  font-size: 24px;
+	vertical-align: top;
+}
+
+#salePriceTag.regularprice {
+  display: none;
+}
 
 img.picto{
 	float:left;

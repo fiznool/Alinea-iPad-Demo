@@ -67,7 +67,7 @@
   <script src="js/jquery.mobile.config.js"></script>
   <script src="js/libs/jquery/jquery.json-2.2.min.js"></script>
   <script src="js/libs/jquery/jquery.aslideshow.min.js"></script>
-
+  <script src="js/libs/handlebars.min.js"></script>
   <!-- Won't use helper.js because the phantomGhostHandler messes with jQM navbar-->
   <!--<script src="js/mylibs/helper.js"></script>-->
 
@@ -84,60 +84,15 @@
           <img src="img/home/home-banner-alt1.jpg" alt="Alinéa" />
         </iframe>
       </div>
-      <div id="home-products" class="ui-grid-b" >
-        <!-- Filled in by jQuery -->
-        <div class="ui-block-a">
-          <div class="product-container" data-product="">
-            <a href="#"></a>
-            <a href="#"><img src="img/home/soldes.gif" class="sale-img"/></a>
-            <img src="" class="main-img"/>
-            <div>
-              <h1 class="name"></h1>
-              <h2 class="brand"></h2>
-              <h4>
-                <span class="price">trial</span>
-                <span class="saleprice">sale</span>
-              </h4>
-            </div>
-          </div> <!-- Close product-container -->
-        </div>
-        <div class="ui-block-b " data-product="">
-          <div class="product-container">
-            <a href="#"></a>
-            <a href="#"><img src="img/home/soldes.gif" class="sale-img"/></a>
-            <img src="" class="main-img"/>
-            <div>
-              <h1 class="name"></h1>
-              <h2 class="brand"></h2>
-              <h4>
-                <span class="price">trial</span>
-                <span class="saleprice">sale</span>
-              </h4>
-            </div>
-          </div> <!-- Close product-container --> 
-        </div>
-        <div class="ui-block-c " data-product="">
-          <div class="product-container">
-            <a href="#"></a>
-            <a href="#"><img src="img/home/soldes.gif" class="sale-img"/></a>
-            <img src="" class="main-img"/>
-            <div>
-              <h1 class="name"></h1>
-              <h2 class="brand"></h2>
-              <h4>
-                <span class="price">trial</span>
-                <span class="saleprice">sale</span>
-              </h4>
-            </div>
-          </div> <!-- Close product-container --> 
-        </div>
-      </div><!-- /grid-a -->
+      <div id="home-products" class="ui-grid-b">
+        <!-- Filled by JS -->
+      </div>
     </div>
     <div data-role="footer" data-position="fixed" data-id="fixed-footer">
       <div data-role="navbar" class="nav-custom-icon" >
         <ul>
           <li><a href="#main" data-icon="house" class="ui-btn-active ui-state-persist footer-home-btn" >Accueil</a></li>
-          <li><a href="#productFindPage" data-icon="find"  class="footer-find-btn" >Trouvez un produit</a></li>
+          <li><a href="#categoryListPage" data-icon="find"  class="footer-find-btn" >Trouvez un produit</a></li>
           <li><a href="#mapPage" data-icon="map-marker" class="footer-map-btn" >Plan du magasin</a></li>
           <li><a href="#connectPage" data-icon="help" data-rel="dialog" class="footer-call-btn" >Demande d'aide</a></li>
         </ul>
@@ -145,18 +100,31 @@
     </div> <!-- close footer -->
   </div> <!-- /main -->
 
+  <script id="special-offers-tmpl" type="text/x-handlebars-template">
+    <div class="ui-block-{{seq}}">
+      <div class="product-container" data-product="{{upc}}">
+        <a href="#"></a>
+        <a href="#"><img src="img/home/soldes.gif" class="sale-img"/></a>
+        <img src="img/product/full/{{imgSrc}}" class="main-img"/>
+        <div>
+          <h1 class="name">{{name}}</h1>
+          <h2 class="brand">{{brand}}</h2>
+          <h4>
+            <span class="price">{{price}} &#8364;</span>
+            <span class="saleprice">{{saleprice}} &#8364;</span>
+          </h4>
+        </div>
+      </div> <!-- Close product-container --> 
+    </div>
+  </script>
 
-  <div data-role="page" id="productFindPage" class="alinea-page">
+  <div data-role="page" id="categoryListPage" class="alinea-page">
     <div data-role="header" data-theme="d">
       <div class="centeredImage"><img src="img/header-small.png" alt="Alinéa" /></div>
     </div>
     <div data-role="content">
-      <div class="centeredImage">
-        <a href="#productSearchPage" data-role="button" data-inline="true" 
-           id="search-btn" data-category="all" data-icon="search" >Recherche</a>
-      </div>
       <div id="content"> 
-        <ul id="catList" data-role="listview" data-inset="true">
+        <ul id="category-list" data-role="listview" data-inset="true">
           <!-- Filled by JS -->
         </ul>
       </div>
@@ -165,15 +133,28 @@
       <div data-role="navbar" class="nav-custom-icon" >
         <ul>
           <li><a href="#main" data-icon="house" class="footer-home-btn" >Accueil</a></li>
-          <li><a href="#productFindPage" data-icon="find"  class="ui-btn-active ui-state-persist footer-find-btn" >Trouvez un produit</a></li>
+          <li><a href="#categoryListPage" data-icon="find"  class="ui-btn-active ui-state-persist footer-find-btn" >Trouvez un produit</a></li>
           <li><a href="#mapPage" data-icon="map-marker" class="footer-map-btn" >Plan du magasin</a></li>
           <li><a href="#connectPage" data-icon="help" data-rel="dialog" class="footer-call-btn" >Demande d'aide</a></li>
         </ul>
       </div><!-- Close nav bar -->
     </div> <!-- close footer -->
-  </div> <!-- /productFindPage -->
+  </div> <!-- /categoryListPage -->
       
-  <div data-role="page" id="subCategoriesPage" class="alinea-page">
+  <script id="category-list-tmpl" type="text/x-handlebars-template">
+    <li id="{{id}}" class="cat-item" data-category="{{id}}">
+      <a href="#">
+        <h3 class="cat-image">
+          <img src="img/category/{{imgSrc}}_small.jpg"  height="80px"/>
+        </h3>
+        <h1 class="cat-text">		
+          <span>{{name}}</span>
+        </h1>
+      </a>
+    </li>
+  </script>
+
+  <div data-role="page" id="productListPage" class="alinea-page">
     <div data-role="header" data-theme="d">
       <div class="centeredImage"><img src="img/header-small.png" alt="Alinéa" /></div>
     </div>
@@ -189,7 +170,7 @@
       <div data-role="navbar" class="nav-custom-icon" >
         <ul>
           <li><a href="#main" data-icon="house" class="footer-home-btn" >Accueil</a></li>
-          <li><a href="#productFindPage" data-icon="find"  class="ui-btn-active ui-state-persist footer-find-btn" >Trouvez un produit</a></li>
+          <li><a href="#categoryListPage" data-icon="find"  class="ui-btn-active ui-state-persist footer-find-btn" >Trouvez un produit</a></li>
           <li><a href="#mapPage" data-icon="map-marker" class="footer-map-btn" >Plan du magasin</a></li>
           <li><a href="#connectPage" data-icon="help" data-rel="dialog" class="footer-call-btn" >Demande d'aide</a></li>
         </ul>
@@ -197,74 +178,34 @@
     </div> <!-- close footer -->
   </div> <!-- /subCategoriesPage -->
 
-  <!-- Templates -->
-  <li id="catListItem" class="cat-item" data-category="">
-    <a href="">
-      <h3 class="cat-image">
-        <img src=""  height="80px"/>
-      </h3>
-      <h1 class="cat-text">		
-        <span ></span>
-      </h1>
-    </a>
-  </li>
-
-  <li id="subCatListItem" class="sub-cat-item" data-product="">
-    <a href="">
-      <h3 class="item-image">
-          <img src="" height="80px"/>
-      </h3>
-      <h3>
-        <span class="itemName ">
-        </span>
-        <span class="itemPrice ">
-        </span>
-        <span class="salePrice ">
-        </span>
-      </h3>
-    </a>
-  </li>
+  <script id="product-list-tmpl" type="text/x-handlebars-template">
+    <li id="{{upc}}" class="sub-cat-item" data-product="{{upc}}">
+      <a href="#">
+        <h3 class="item-image">
+            <img src="img/product/full/{{imgSrc}}" height="80px"/>
+        </h3>
+        <h3>
+          <span class="itemName">{{name}}</span>
+          <span class="itemPrice {{priceclass}}">{{price}} &#8364;</span>
+          <span class="salePrice {{priceclass}}">{{saleprice}} &#8364;</span>
+        </h3>
+      </a>
+    </li>
+  </script>
 
 
   <div data-role="page" id="productInfoPage" class="alinea-page">
     <div data-role="header" data-theme="d">
       <div class="centeredImage"><img src="img/header-small.png" alt="Alinéa" /></div>
     </div>
-    <div data-role="content">
-      <div id="newProductStyle2">
-        <div id="productSummaryWrapper" class="clearfix">
-          <div id="productImage">
-            <!-- Filled by JS -->
-          </div>
-          <div id="productSummary">
-            <!-- Filled by JS -->
-          </div>
-          <div id="priceTag">
-            <!-- Filled by JS -->
-          </div>
-          <div id="salePriceTag">
-            <!-- Filled by JS -->
-          </div>
-        </div>
-        <div id="productDetailsWrapper" class="ui-grid-a clearfix">
-          <div class="ui-block-a">
-            <div id="productDetailsLeftColumn" class="productDetailsColumn">
-              <!-- Filled by JS -->
-            </div>
-          </div>
-          <div class="ui-block-b">
-            <div id="productDetailsRightColumn" class="productDetailsColumn">
-              <!-- Filled by JS -->
-            </div>
-          </div>
-        </div>
-      </div>
+    <div id="productInfoView" data-role="content">
+      <!-- Filled by JS -->
     </div>
     <div data-role="footer" data-position="fixed" data-id="fixed-footer">
       <div data-role="navbar" class="nav-custom-icon" >
         <ul>
           <li><a href="#main" data-icon="house" class="footer-home-btn" >Accueil</a></li>
-          <li><a href="#productFindPage" data-icon="find"  class="ui-btn-active ui-state-persist footer-find-btn" >Trouvez un produit</a></li>
+          <li><a href="#categoryListPage" data-icon="find"  class="ui-btn-active ui-state-persist footer-find-btn" >Trouvez un produit</a></li>
           <li><a href="#mapPage" data-icon="map-marker" class="footer-map-btn" >Plan du magasin</a></li>
           <li><a href="#connectPage" data-icon="help" data-rel="dialog" class="footer-call-btn" >Demande d'aide</a></li>
         </ul>
@@ -272,29 +213,62 @@
     </div> <!-- close footer -->
   </div> <!-- /productInfoPage -->
 
-  
-  <div data-role="page" id="productSearchPage" class="alinea-page"> 
-    <div data-role="header"  data-theme="d">
-      <div class="centeredImage"><img src="img/header-small.png" alt="Alinéa" /></div>
+  <script id="product-info-tmpl" type="text/x-handlebars-template">
+    <div id="newProductStyle2">
+      <div id="productSummaryWrapper" class="clearfix">
+        <div id="productImage">
+          <img src="img/product/full/{{imgSrc}}" alt="{{name}}" />
+        </div>
+        <div id="productSummary">
+          <h1>{{brand}}</h1>
+          <h2>{{name}}</h2>
+          <p>{{{desc1}}}</p>
+        </div>
+        <div id="priceTag" class={{priceclass}}>
+          <span id="price">{{price}}</span>
+          <span id="currency">&#8364;</span>
+        </div>
+        <div id="salePriceTag" class={{priceclass}}>
+          <span id="salePrice">{{saleprice}}</span>
+          <span id="salecurrency">&#8364;</span>
+        </div>
+      </div>
+      <div id="productDetailsWrapper" class="ui-grid-a clearfix">
+        <div class="ui-block-a">
+          <div id="productDetailsLeftColumn" class="productDetailsColumn">
+            <h1>Description du produit</h1>
+            {{#if desc2}}
+              <p>{{{desc2}}}</p>
+            {{/if}}
+            {{#if colour}}
+              <p>{{{colour}}}</p>
+            {{/if}}
+          </div>
+        </div>
+        <div class="ui-block-b">
+          <div id="productDetailsRightColumn" class="productDetailsColumn">
+            <h1>R&#233;f&#233;rence produit</h1>
+            <p>{{upc}}</p>
+            {{#if pkg}}
+              <h1>Conditionment</h1>
+              <p>{{{pkg}}}</p>
+            {{/if}}
+            {{#if dims}}
+              <h1>Dimensions</h1>
+              <p>{{{dims}}}</p>
+            {{/if}}
+            {{#if pictos}}
+              {{#each pictos}}
+                <p><img src="img/product/picto/{{this}}" alt="{{this}}" class="picto" /></p>
+              {{/each}}
+            {{/if}}
+          </div>
+        </div>
+      </div>
     </div>
-    <div data-role="content">
-      <ul id="list" data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Rechercher un bien...">
-        <!-- Filled in by JS -->
-      </ul>
-    </div> 
-    <div data-role="footer" data-position="fixed" data-id="fixed-footer">
-      <div data-role="navbar" class="nav-custom-icon" >
-        <ul>
-          <li><a href="#main" data-icon="house" class="footer-home-btn" >Accueil</a></li>
-          <li><a href="#productFindPage" data-icon="find"  class="ui-btn-active ui-state-persist footer-find-btn" >Trouvez un produit</a></li>
-          <li><a href="#mapPage" data-icon="map-marker" class="footer-map-btn" >Plan du magasin</a></li>
-          <li><a href="#connectPage" data-icon="help" data-rel="dialog" class="footer-call-btn" >Demande d'aide</a></li>
-        </ul>
-      </div><!-- Close nav bar -->
-    </div> <!-- close footer -->
-  </div> <!-- /productSearchPage -->
-  
-  
+  </script>
+
+
   <div data-role="page" id="mapPage" class="alinea-page">
     <div data-role="header" data-theme="d">
       <div class="centeredImage">
@@ -310,7 +284,7 @@
       <div data-role="navbar" class="nav-custom-icon" >
         <ul>
           <li><a href="#main" data-icon="house" class="footer-home-btn" >Accueil</a></li>
-          <li><a href="#productFindPage" data-icon="find"  class="footer-find-btn" >Trouvez un produit</a></li>
+          <li><a href="#categoryListPage" data-icon="find"  class="footer-find-btn" >Trouvez un produit</a></li>
           <li><a href="#mapPage" data-icon="map-marker" class="ui-btn-active ui-state-persist footer-map-btn" >Plan du magasin</a></li>
           <li><a href="#connectPage" data-icon="help" data-rel="dialog" class="footer-call-btn" >Demande d'aide</a></li>
         </ul>
@@ -323,21 +297,30 @@
       <h1>Appel conseiller pour assistance</h1>	
     </div>
     <div data-role="content">
-      <div id="callingTxt1">
+      <div id="connectStep1">
         <p>Vous avez demandé l'assistance de l'un de nos conseillers.</p>
         <p>Merci de confirmer votre demande. Un conseiller vous rejoindra dans les plus brefs délais.</p>
+        <button id="connectConfirmBtn">Confirmer</a>
       </div>
-      <div id="callingTxt2" style="display: none">
+      <div id="connectStep2">
         <p>Merci! Votre demande a été prise en compte. Un conseiller vous rejoindra dans les plus brefs délais.</p>
       </div>
-      <!-- <a href="#connectConfirmPage" data-role="button" data-rel="dialog" data-transition="none">Confirmer</a>-->
-      <div id="confirmBtn"><button onclick="$.showConfirmPage()">Confirmer</button></div>
-      <a href="#main" data-role="button">Annuler</a>
+      <a href="#" data-role="button" data-rel="back">Annuler</a>
     </div>
-    
   </div>
-  <!-- /Views -->
+  <div data-role="page" id="connectSuccessPage">
+    <div data-role="header">
+      <h1>Appel conseiller pour assistance</h1>	
+    </div>
+    <div data-role="content">
+      <p>Merci! Votre demande a été prise en compte. Un conseiller vous rejoindra dans les plus brefs délais.</p>
+      <a href="#" data-role="button" data-rel="back">Annuler</a>
+    </div>
+  </div>
 
+  <!-- /Views -->
+  
+  
   <!-- mathiasbynens.be/notes/async-anialytics-snippet Change UA-XXXXX-X to be your site's ID -->
   <!--
   <script>

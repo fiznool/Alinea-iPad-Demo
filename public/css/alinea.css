@@ -87,12 +87,20 @@ span.itemPrice{
 	padding: 30px 0px 0px 0px;
 }
 
+span.itemPrice.onsale{
+  text-decoration: line-through
+}
+
 span.salePrice{
 	font-family: rockwell, Rockwell, sans-serif;
 	float:right;
 	color:#00425c;
 	color: red;
 	padding: 30px 20px 0px 0px;
+}
+
+span.salePrice.regularprice{
+  display: none;
 }
 
 /* product view on the homepage */
@@ -178,6 +186,10 @@ span.saleprice{
 	color:			#000;
 	padding: 0px 0px 0px 5px;
 		
+}
+
+#connectStep2 {
+  display: none;
 }
 
 /* f
